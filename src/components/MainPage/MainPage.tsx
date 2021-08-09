@@ -15,7 +15,7 @@ import {
     Route,
     Link
   } from "react-router-dom";
-import { CountryDetails } from '../../CountryDetails/CountryDetails'
+import { CountryDetails } from '../CountryDetails/CountryDetails'
  //@import  url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
 
  type GetCountries = ReturnType<typeof getCountries>
