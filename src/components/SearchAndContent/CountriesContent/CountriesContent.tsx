@@ -1,12 +1,11 @@
 import React from 'react'
-import styled from 'styled-components'
 import {CountriesCard} from './CountriesCard/CountriesCard'
-import {ISingleCountires} from '../../../entities/countries'
+import {ISingleCountry} from '../../../entities/singleCountryType'
 
 interface ICountriesList{
-    countriesList: ISingleCountires[];
+    countriesList: ISingleCountry[];
     pagesNumber: number;
-    handleMoreInfo: (e: any) => void
+    handleMoreInfo: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void
 }
 
 export const CountriesContent: React.FC<ICountriesList> = (props)=>{

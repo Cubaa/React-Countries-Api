@@ -1,4 +1,4 @@
-export interface ISingleCountires{
+export interface ISingleCountry{
     
 name:string;
 topLevelDomain: [

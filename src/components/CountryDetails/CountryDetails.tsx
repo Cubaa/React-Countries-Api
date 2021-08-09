@@ -16,58 +16,56 @@ export const CountryDetails:React.FC<IThemeColor> = (props) => {
     return (
         <CountryDetailsWrapper>
             <div>
-                <img src={countryDetails.country[0].flag} alt="" />
+                <img src={countryDetails.country[0].flag} alt="flag" />
             </div>
             <div>
-            
                 <h1>{countryDetails.country[0].name}</h1>
                 <div>
-                <div>
                     <div>
-                        <p>
-                        <span>Native Name: </span><span>{countryDetails.country[0].nativeName}</span>
-                        </p>
-                        <p>
-                        <span>Population: </span><span>{countryDetails.country[0].population}</span>
-                        </p>
-                        <p>
-                        <span>Region: </span><span>{countryDetails.country[0].region}</span>
-                        </p>
-                        <p>
-                        <span>Sub Region: </span><span>{countryDetails.country[0].subregion}</span>
-                        </p>
-                        <p>
-                        <span>Capital: </span><span>{countryDetails.country[0].capital}</span>
-                        </p>
-                    </div>
-                    <div>
-                        <p>
-                        <span>Top Level Domain: </span><span>{countryDetails.country[0].topLevelDomain}</span>
-                        </p>
-                        <p>
-                        <span>Currencies: </span><span>{countryDetails.country[0].currencies[0].code}</span>
-                        </p>
-                        <p> 
-                        <span>Languages: </span>{countryDetails.country[0].languages.map((language: any, index: number)=>{
-                           if(index===0 || index===1){
-                            return (<span style={props.themeColor === "light" ? {color: "dimgrey", paddingRight: "0.3rem"} : {color: "#e0d8d8", paddingRight: "0.3rem"}}>{language.name}</span>)
-                           }
-                         })}
-                         </p>
-
+                        <div>
+                            <p>
+                                <span>Native Name: </span><span>{countryDetails.country[0].nativeName}</span>
+                            </p>
+                            <p>
+                                <span>Population: </span><span>{countryDetails.country[0].population}</span>
+                            </p>
+                            <p>
+                                <span>Region: </span><span>{countryDetails.country[0].region}</span>
+                            </p>
+                            <p>
+                                <span>Sub Region: </span><span>{countryDetails.country[0].subregion}</span>
+                            </p>
+                            <p>
+                                <span>Capital: </span><span>{countryDetails.country[0].capital}</span>
+                            </p>
+                       </div>
+                        <div>
+                            <p>
+                                <span>Top Level Domain: </span><span>{countryDetails.country[0].topLevelDomain}</span>
+                            </p>
+                            <p>
+                                <span>Currencies: </span><span>{countryDetails.country[0].currencies[0].code}</span>
+                            </p>
+                            <p> 
+                                <span>Languages: </span>{countryDetails.country[0].languages.map((language: any, index: number)=>{
+                                    if(index===0 || index===1){
+                                        return (<span key={index} style={props.themeColor === "light" ? {color: "dimgrey", paddingRight: "0.3rem"} : {color: "#e0d8d8", paddingRight: "0.3rem"}}>{language.name}</span>)
+                                    }
+                                })}
+                            </p>
+                       </div>
                     </div>
                 </div>
-            </div>
-            <div>
-                <p>Border Countries</p>
                 <div>
-                    {countryDetails.country[0].borders.map((country:any)=>{
-                        return (
-                            <span>{country}</span>
-                        )
-                    })}
+                    <p>Border Countries</p>
+                    <div>
+                        {countryDetails.country[0].borders.map((country:string, index: number)=>{
+                            return (
+                                <span key={index}>{country}</span>
+                            )
+                        })}
+                    </div>
                 </div>
-            </div>
             </div>
         </CountryDetailsWrapper>
     )

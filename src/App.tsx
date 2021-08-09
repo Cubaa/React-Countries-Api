@@ -8,7 +8,7 @@ import {Provider} from 'react-redux'
 import store from './tools/store'
 
 function App() {
-  const [themeColor, setThemeColor] = useState('light')
+  const [themeColor, setThemeColor] = useState<string>('light')
   const switchThemeColor = ()=>{
     if(themeColor==='light')
       setThemeColor('dark')

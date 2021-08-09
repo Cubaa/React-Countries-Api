@@ -3,47 +3,47 @@ import styled from 'styled-components'
 import {SearchInput} from './SearchInput/SearchInput'
 import { SelectRegion } from './SelectRegion/SelectRegion'
 import {CountriesContent} from './CountriesContent/CountriesContent'
-import {ISingleCountires} from '../../entities/countries'
+import {ISingleCountry} from '../../entities/singleCountryType'
 import {Pagination} from './Pagination/Pagination'
-import { createNoSubstitutionTemplateLiteral } from 'typescript'
 import {HiOutlineArrowCircleLeft, HiOutlineArrowCircleRight} from 'react-icons/hi'
 import { useHistory } from "react-router-dom";
+
 interface ICountriesList{
-    countriesList: ISingleCountires[],
+    countriesList: ISingleCountry[],
     pagination: string;
     themeColor: string;
     switchThemeColor: () => void;
 }
 interface IThemeColor  {
-    themeColor: any;
+    themeColor: string;
 }
 export const SearchAndContent:React.FC<ICountriesList> = (props)=>{
-    const [countriesList, setCountriesList] = useState<ISingleCountires[]>([])
+    const [countriesList, setCountriesList] = useState<ISingleCountry[]>([])
     const [region, setRegion] = useState<string>('Region')
     const [pagesNumber, setPagesNumber] = useState<number>(0)
     const [choosePageNumber, setchoosePageNumber] = useState<number>(1)
     const pagesNumberEl = useRef<any>([])
-    let  filteredCountries:any = []
+    let  filteredCountries:ISingleCountry[] = []
     let history = useHistory();
 
 
 
 
-    const handleMoreInfo = (e:any)=>{
+    const handleMoreInfo = (e:React.MouseEvent<HTMLAnchorElement, MouseEvent>)=>{
        
-        const countryRegion = e.target.parentElement.parentElement.parentElement.dataset.region;
-        const countryName = e.target.parentElement.parentElement.parentElement.dataset.name
+        const countryRegion = (e.target as Element).parentElement?.parentElement?.parentElement?.dataset.region;
+        const countryName = (e.target as Element).parentElement?.parentElement?.parentElement?.dataset.name
         
-        const country = countriesList.filter((country:ISingleCountires)=>{
+        const country = countriesList.filter((country:ISingleCountry)=>{
             if(country.name===countryName && country.region===countryRegion)
                 return country
         })
         history.push({
-            pathname: `/${region}/${countryName}`,
+            pathname: `/${countryRegion}/${countryName}`,
             state: {country}
         })
     }
-    const selectRegion = (e:any)=>{
+    const selectRegion = (e:React.ChangeEvent<HTMLSelectElement>)=>{
         setRegion(e.target.value)
         setchoosePageNumber(1)
         pagesNumberEl.current.forEach((item:any)=>{
@@ -76,15 +76,13 @@ export const SearchAndContent:React.FC<ICountriesList> = (props)=>{
             setPagesNumber(Math.ceil(props.countriesList.length / 10))
         }
         else{
-            const countriesByregion = props.countriesList.filter((countrie: any) =>{
+            const countriesByregion = props.countriesList.filter((country: ISingleCountry) =>{
                 
-                if(countrie.region=== region){
-                    return countrie
+                if(country.region=== region){
+                    return country
                 }        
             })
             setCountriesList(countriesByregion)
-      
-            
             setPagesNumber(Math.ceil(countriesByregion.length / 10))
         }
         
@@ -100,7 +98,7 @@ export const SearchAndContent:React.FC<ICountriesList> = (props)=>{
         })
         
         setchoosePageNumber(1)
-       filteredCountries = props.countriesList.filter((country: ISingleCountires, index: number)=>{
+       filteredCountries = props.countriesList.filter((country: ISingleCountry, index: number)=>{
             
             if(country.name.includes(`${e.target.value}`)){
                 if(country.region===region)
@@ -202,7 +200,7 @@ input{
         
         color: ${props => props.theme.colors.fontColorInput};
         background-color: ${props => props.theme.colors.inputbackground};
-/*         background-image: url(http://mihaeltomic.com/codepen/input-search/ic_search_black_24px.svg); */
+
  
       background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
         background-repeat: no-repeat;

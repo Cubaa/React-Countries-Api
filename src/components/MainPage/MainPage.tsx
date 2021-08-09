@@ -7,18 +7,15 @@ import {useSelector} from 'react-redux'
 import {IState} from '../../reducers'
 import {ICountriesReducer} from '../../reducers/countriesReducers'
 import {getCountries} from '../../Actions/countriesActions'
-import { ISingleCountires } from '../../entities/countries'
-import {FiArrowLeft} from 'react-icons/fi'
+import {IDimensions} from '../../entities/dimensionsType'
 import {
     BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
+    Route
   } from "react-router-dom";
 import { CountryDetails } from '../CountryDetails/CountryDetails'
- //@import  url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
 
- type GetCountries = ReturnType<typeof getCountries>
+
+type GetCountries = ReturnType<typeof getCountries>
 
 interface IThemeColor{
     themeColor: string;
@@ -29,11 +26,11 @@ interface IThemeColor{
 export const MainPage:React.FC<IThemeColor> = (props)=>{
     const themeColor = props.themeColor
     const switchThemeColor = props.switchThemeColor
-    const [dimensions, setDimensions] = useState({
+    const [dimensions, setDimensions] = useState<IDimensions>({
         height: window.innerHeight,
         width: window.innerWidth
     })
-    const [pagination, setPagination] = useState("")
+    const [pagination, setPagination] = useState<string>("")
     const dispatch = useDispatch()
     useEffect(()=>{
         dispatch<GetCountries>(getCountries())
@@ -56,9 +53,9 @@ export const MainPage:React.FC<IThemeColor> = (props)=>{
         window.addEventListener("resize", handleResize)
        
         if(dimensions.width < 1024){
-           
             setPagination("mobile")
         }else setPagination("desktop")
+        
         return () => {
             window.removeEventListener('resize', handleResize)
         }

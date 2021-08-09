@@ -1,12 +1,12 @@
-import React, {useState} from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import {ISingleCountires} from '../../../../entities/countries'
+import {ISingleCountry} from '../../../../entities/singleCountryType'
 
 
 interface ICountriesList{
-    countriesList: any[];
+    countriesList: ISingleCountry[];
     pagesNumber: number;
-    handleMoreInfo: (e: any) => void;
+    handleMoreInfo: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
 }
 
 export const CountriesCard: React.FC<ICountriesList> = (props)=>{
@@ -21,12 +21,12 @@ export const CountriesCard: React.FC<ICountriesList> = (props)=>{
     
     return(
         <>
-        {partingCountriesArr[props.pagesNumber-1]?.map((country: ISingleCountires, index: number)=>{
+        {partingCountriesArr[props.pagesNumber-1]?.map((country: ISingleCountry, index: number)=>{
              
             return(
                 <CountriesCardWrapper key={index} data-region={country.region} data-name={country.name}>
                 <div>
-                    <img src={country.flag} alt="" />
+                    <img src={country.flag} alt="flag" />
                 </div>
                 <div>
                     <span>{country.name}</span>

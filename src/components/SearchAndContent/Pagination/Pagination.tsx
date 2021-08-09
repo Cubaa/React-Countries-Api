@@ -1,9 +1,8 @@
-import React, {useRef, useEffect} from 'react'
-import styled from 'styled-components'
+import React from 'react'
 
 interface IPagination{
     pagesNumber: number;
-    handleChoosePageNumber: (e: any) => void;
+    handleChoosePageNumber: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
     pagination: string;
     choosePageNumber: number;
     countriesListLength: number;
@@ -15,26 +14,21 @@ export const Pagination: React.FC<IPagination> = (props)=>{
     const paginationNumbers = []
   
  
-      
     if(true && props.pagination==="desktop" && props.countriesListLength>0){
         for(let i=0; i<props.pagesNumber;i++){
             paginationNumbers.push(<div style={props.themeColor === "light" ? {backgroundColor: "#fff"} : {backgroundColor: "#1E2C35"}}  ref={props.pagesNumberEl.current[i]} key={i+1} onClick={(e)=>props.handleChoosePageNumber(e)} data-number={i+1} >{i+1}</div>)
         }
-} else if(props.pagination==="mobile" && props.countriesListLength>0) {
-    
-    paginationNumbers.push(<div>{props.choosePageNumber}</div>)
-    
-}
+    } else if(props.pagination==="mobile" && props.countriesListLength>0) {
+        paginationNumbers.push(<div key={1}>{props.choosePageNumber}</div>)
+    }
 
 if(props.pagination==="desktop"){
     paginationNumbers.forEach((item)=>{
-   
     if(item.props.children===props.choosePageNumber){
         props.themeColor === "light" ? item.props.style.backgroundColor =  "lightgrey" : item.props.style.backgroundColor= "#0a3855"
     }
 })
 }
-
     return(
         <>
             {paginationNumbers}

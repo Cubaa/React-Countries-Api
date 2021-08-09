@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 interface ISelectRegion{
-  selectRegion: (e: any) => void
+  selectRegion: (e: React.ChangeEvent<HTMLSelectElement>) => void
 }
 
 

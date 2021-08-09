@@ -1,8 +1,7 @@
 import React from 'react'
-import styled from 'styled-components'
 
 interface ISearchCountries{
-    searchCountries:(e:any) => void;
+    searchCountries:(e:React.ChangeEvent<HTMLInputElement>) => void;
 }
 export const SearchInput: React.FC<ISearchCountries> = (props)=>{
     return(

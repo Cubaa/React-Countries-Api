@@ -1,7 +1,7 @@
-import {ISingleCountires} from '../entities/countries'
+import {ISingleCountry} from '../entities/singleCountryType'
 import * as actionTypes from '../Actions/ActionTypes/countriesTypes'
 export interface ICountriesReducer{
-    countriesList: ISingleCountires[];
+    countriesList: ISingleCountry[];
 
 }
 
