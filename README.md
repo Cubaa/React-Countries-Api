@@ -1,4 +1,4 @@
-React, TypeScript, Redux, Styled Components, Custom pagination.
+React, TypeScript, Redux, Styled Components, Custom pagination
 
 
 # Getting Started with Create React App
