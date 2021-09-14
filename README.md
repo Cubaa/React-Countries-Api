@@ -1,5 +1,7 @@
 React, TypeScript, Redux, Styled Components, Custom pagination.
 
+Design files for mobile & desktop layouts from frontendmentor.io
+
 
 # Getting Started with Create React App
 
