@@ -1,4 +1,8 @@
-React, TypeScript, Redux, Styled Components, Custom pagination.
+React, TypeScript, Redux, Styled-components, Custom pagination.
+
+LIVE: https://world-countries-api.netlify.app/
+
+Design files for mobile & desktop layouts from frontendmentor.io
 
 
 # Getting Started with Create React App
